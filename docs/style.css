@@ -1,0 +1,305 @@
+/* docs/style.css */
+
+/* --- Police de Caractères (Exemple: Décommentez pour importer depuis Google Fonts) --- */
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap'); */
+/* body { font-family: 'Open Sans', sans-serif; } */
+/* h1, h2, h3, h4, h5, h6 { font-family: 'Roboto', sans-serif; font-weight: 700; } */
+
+
+/* ================================================================= */
+/* === Variables pour le Thème CLAIR (Charte Graphique "Pro" 1) === */
+/* ================================================================= */
+:root {
+    /* Couleurs Principales */
+    --brand-primary: #007bff; /* Bleu vibrant, pour les actions principales, boutons */
+    --brand-secondary: #6c757d; /* Gris-bleu, pour les éléments secondaires */
+    --brand-accent: #28a745; /* Vert pour les succès, accents positifs */
+
+    /* Couleurs de Fond */
+    --bg-page: #f8f9fa; /* Fond de page très clair */
+    --bg-card: #ffffff; /* Fond des cartes et sections, blanc pur */
+    --bg-form: #f0f2f5; /* Fond des formulaires, légèrement grisé */
+
+    /* Couleurs de Texte */
+    --text-primary: #212529; /* Texte principal, très sombre */
+    --text-secondary: #495057; /* Texte secondaire, descriptions */
+    --text-muted: #6c757d; /* Texte discret, copyright, petites notes */
+    --text-on-brand: #ffffff; /* Texte sur les couleurs de marque (boutons, en-têtes) */
+
+    /* Bordures et Séparateurs */
+    --border-light: #dee2e6; /* Bordures légères */
+    --border-medium: #ced4da; /* Bordures moyennes */
+
+    /* Ombres */
+    --shadow-sm: rgba(0, 0, 0, 0.05); /* Petite ombre légère */
+    --shadow-md: rgba(0, 0, 0, 0.15); /* Ombre moyenne pour les cartes */
+
+    /* Header/Footer (peut utiliser des couleurs spécifiques de la charte ou des variables générales) */
+    --header-footer-bg: var(--brand-primary);
+    --header-footer-text: var(--text-on-brand);
+
+    /* Inputs */
+    --input-bg: var(--bg-card);
+    --input-border: var(--border-medium);
+    --input-text: var(--text-primary);
+
+    /* Alertes (réutiliser des couleurs de marque ou définir des spécifiques) */
+    --alert-success-bg: #d4edda; --alert-success-text: #155724;
+    --alert-danger-bg: #f8d7da; --alert-danger-text: #721c24;
+    --alert-info-bg: #d1ecf1; --alert-info-text: #0c5460;
+}
+
+/* ================================================================= */
+/* === Variables pour le Thème SOMBRE (Charte Graphique "Pro" 2) === */
+/* ================================================================= */
+body.dark-theme {
+    /* Couleurs Principales */
+    --brand-primary: #17a2b8; /* Cyan lumineux, pour les actions principales */
+    --brand-secondary: #adb5bd; /* Gris clair, pour les éléments secondaires */
+    --brand-accent: #20c997; /* Vert menthe pour les succès */
+
+    /* Couleurs de Fond */
+    --bg-page: #212529; /* Fond de page très sombre (noir charbon) */
+    --bg-card: #343a40; /* Fond des cartes et sections, gris foncé */
+    --bg-form: #495057; /* Fond des formulaires, gris moyen */
+
+    /* Couleurs de Texte */
+    --text-primary: #f8f9fa; /* Texte principal, très clair */
+    --text-secondary: #ced4da; /* Texte secondaire */
+    --text-muted: #adb5bd; /* Texte discret */
+    --text-on-brand: #212529; /* Texte sur les couleurs de marque (devient sombre) */
+
+    /* Bordures et Séparateurs */
+    --border-light: #495057;
+    --border-medium: #6c757d;
+
+    /* Ombres */
+    --shadow-sm: rgba(255, 255, 255, 0.05);
+    --shadow-md: rgba(255, 255, 255, 0.15);
+
+    /* Header/Footer */
+    --header-footer-bg: #111315; /* Encore plus sombre */
+    --header-footer-text: var(--text-on-brand);
+
+    /* Inputs */
+    --input-bg: var(--bg-form);
+    --input-border: var(--border-medium);
+    --input-text: var(--text-primary);
+
+    /* Alertes (adaptez pour le thème sombre) */
+    --alert-success-bg: #1c744f; --alert-success-text: #d4edda;
+    --alert-danger-bg: #8d2c37; --alert-danger-text: #f8d7da;
+    --alert-info-bg: #117a8b; --alert-info-text: #d1ecf1;
+}
+
+/* ================================================================= */
+/* === Styles Généraux et Applications des Variables === */
+/* ================================================================= */
+
+/* Transitions communes pour les propriétés qui changent avec le thème */
+/* Permet d'éviter de répéter 'transition: color 0.3s ease, background-color 0.3s ease, ...' */
+body, header,
+.section-container, .card, .p-4.border.rounded.shadow-sm.bg-light,
+h2, h3, .card-title, a,
+.btn-primary, .btn-info, .btn-outline-light,
+.form-control, .form-control:focus,
+.modal-content, .modal-header, .modal-footer {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+header {
+    background-color: var(--header-footer-bg);
+    color: var(--header-footer-text);
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: 0 2px 4px var(--shadow-sm);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    padding-bottom: 0.5rem;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+/* Navbar links */
+.navbar-brand, .nav-link {
+    color: var(--header-footer-text) !important;
+    text-decoration: none;
+    font-weight: bold;
+}
+.nav-link:hover {
+    color: var(--brand-accent) !important; /* Couleur d'accentuation pour les liens survolés */
+}
+.btn-outline-light { /* Bouton de thème et connexion */
+    color: var(--header-footer-text) !important;
+    border-color: var(--header-footer-text) !important;
+}
+.btn-outline-light:hover {
+    background-color: var(--header-footer-text) !important;
+    color: var(--header-footer-bg) !important;
+}
+
+/* Main content sections and cards */
+.section-container, .card, .p-4.border.rounded.shadow-sm.bg-light {
+    background-color: var(--bg-card);
+    border-color: var(--border-light) !important;
+    box-shadow: 0 4px 8px var(--shadow-md);
+}
+/* Style spécifique pour les formulaires imbriqués dans les sections */
+.p-4.border.rounded.shadow-sm.bg-light {
+    background-color: var(--bg-form) !important; /* Utilise le fond de formulaire */
+    border-color: var(--border-medium) !important;
+}
+
+
+h2, h3, .card-title {
+    color: var(--brand-primary) !important; /* Les titres utilisent la couleur primaire de la marque */
+}
+.card-text {
+    color: var(--text-secondary); /* Texte des cartes utilise la couleur secondaire */
+}
+
+
+/* Boutons Bootstrap */
+.btn-primary {
+    background-color: var(--brand-primary) !important;
+    border-color: var(--brand-primary) !important;
+    color: var(--text-on-brand) !important;
+}
+.btn-primary:hover {
+    background-color: color-mix(in srgb, var(--brand-primary) 85%, black) !important; /* Assombrir au survol */
+    border-color: color-mix(in srgb, var(--brand-primary) 85%, black) !important;
+}
+.btn-info { /* Utilisé pour les boutons AI, utilise accent */
+    background-color: var(--brand-accent) !important;
+    border-color: var(--brand-accent) !important;
+    color: var(--text-on-brand) !important;
+}
+.btn-info:hover {
+    background-color: color-mix(in srgb, var(--brand-accent) 85%, black) !important;
+    border-color: color-mix(in srgb, var(--brand-accent) 85%, black) !important;
+}
+.text-success { /* Pour le prix sur les cartes */
+    color: var(--brand-accent) !important;
+}
+
+
+/* Formulaires et Inputs */
+.form-control, .form-control:focus {
+    background-color: var(--input-bg);
+    color: var(--input-text);
+    border-color: var(--input-border);
+}
+.form-control::placeholder {
+    color: var(--text-secondary); /* Placeholder avec couleur secondaire */
+    opacity: 0.7;
+}
+
+/* Adapte les couleurs spécifiques des alertes */
+.alert-secondary { /* Utilise pour les sorties AI par défaut */
+    background-color: var(--bg-form); /* Fond des formulaires */
+    border-color: var(--border-medium);
+    color: var(--text-primary);
+    white-space: pre-wrap; /* Pour conserver le formatage du texte AI */
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    min-height: 50px;
+    overflow-x: auto;
+}
+.alert-info {
+    background-color: var(--alert-info-bg) !important;
+    border-color: var(--alert-info-bg) !important;
+    color: var(--alert-info-text) !important;
+}
+.alert-success {
+    background-color: var(--alert-success-bg) !important;
+    border-color: var(--alert-success-bg) !important;
+    color: var(--alert-success-text) !important;
+}
+.alert-danger {
+    background-color: var(--alert-danger-bg) !important;
+    border-color: var(--alert-danger-bg) !important;
+    color: var(--alert-danger-text) !important;
+}
+
+/* Styles de pied de page */
+footer {
+    background-color: var(--header-footer-bg) !important;
+    color: var(--header-footer-text) !important;
+    padding: 20px;
+    margin-top: 40px;
+    font-size: 0.9rem;
+}
+
+/* Modale de connexion */
+.modal-content {
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+}
+.modal-header {
+    background-color: var(--header-footer-bg);
+    color: var(--header-footer-text);
+    border-bottom-color: var(--border-medium);
+}
+.modal-title {
+    color: var(--header-footer-text);
+}
+.modal-body {
+    color: var(--text-primary);
+}
+.modal-footer {
+    border-top-color: var(--border-medium);
+}
+
+/* Styles pour les cartes produits personnalisées */
+.product-card {
+    height: 100%; /* Important pour aligner les cartes dans la grille Bootstrap */
+}
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 1px solid var(--border-light);
+}
+
+/* Liste des clients */
+.customer-item {
+    background-color: var(--bg-form); /* Utilisez un fond légèrement différent pour les items de liste */
+    border: 1px solid var(--border-light);
+    color: var(--text-primary);
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.customer-item small {
+    color: var(--text-muted) !important;
+}
+
+/* Ajustements spécifiques */
+#theme-toggle {
+    margin-right: 15px; /* Espace le bouton du thème du bouton de connexion */
+}

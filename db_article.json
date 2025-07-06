@@ -1,0 +1,82 @@
+[
+  {
+    "id": "CAPITAL-1751770645976-0",
+    "name": "Robuste Logiciel Mode 1",
+    "description": "Découvrez notre Logiciel Robuste, une solution avancée pour optimiser votre quotidien dans le domaine de mode. Conçu pour la performance et la simplicité, il intègre une IA de pointe pour une expérience utilisateur sans précédent.",
+    "price": 41.48,
+    "imageUrl": "https://via.placeholder.com/300x200?text=Robuste%20Logiciel%20Mod",
+    "stock": 44
+  },
+  {
+    "id": "prod-1751770645976-1",
+    "name": "Performant Plateforme Sport 2",
+    "description": "Découvrez notre Plateforme Performant, une solution avancée pour optimiser votre quotidien dans le domaine de sport. Conçu pour la performance et la simplicité, il intègre une IA de pointe pour une expérience utilisateur sans précédent.",
+    "price": 81.46,
+    "imageUrl": "https://via.placeholder.com/300x200?text=Performant%20Plateform",
+    "stock": 3
+  },
+  {
+    "id": "prod-1751770645976-2",
+    "name": "Innovant Capteur Bureau 3",
+    "description": "Découvrez notre Capteur Innovant, une solution avancée pour optimiser votre quotidien dans le domaine de bureau. Conçu pour la performance et la simplicité, il intègre une IA de pointe pour une expérience utilisateur sans précédent.",
+    "price": 106.57,
+    "imageUrl": "https://via.placeholder.com/300x200?text=Innovant%20Capteur%20Bur",
+    "stock": 7
+  },
+  {
+    "id": "prod-1751770645976-3",
+    "name": "Innovant Solution Tech 4",
+    "description": "Découvrez notre Solution Innovant, une solution avancée pour optimiser votre quotidien dans le domaine de tech. Conçu pour la performance et la simplicité, il intègre une IA de pointe pour une expérience utilisateur sans précédent.",
+    "price": 119.33,
+    "imageUrl": "https://via.placeholder.com/300x200?text=Innovant%20Solution%20Te",
+    "stock": 31
+  },
+  {
+    "id": "prod-1751770645976-4",
+    "name": "Intuitif Solution Bureau 5",
+    "description": "Découvrez notre Solution Intuitif, une solution avancée pour optimiser votre quotidien dans le domaine de bureau. Conçu pour la performance et la simplicité, il intègre une IA de pointe pour une expérience utilisateur sans précédent.",
+    "price": 56.32,
+    "imageUrl": "https://via.placeholder.com/300x200?text=Intuitif%20Solution%20Bu",
+    "stock": 3
+  },
+  {
+    "id": "prod-1751770645976-5",
+    "name": "Écologique Plateforme Bureau 6",
+    "description": "Découvrez notre Plateforme Écologique, une solution avancée pour optimiser votre quotidien dans le domaine de bureau. Conçu pour la performance et la simplicité, il intègre une IA de pointe pour une expérience utilisateur sans précédent.",
+    "price": 29.3,
+    "imageUrl": "https://via.placeholder.com/300x200?text=%C3%89cologique%20Plateform",
+    "stock": 28
+  },
+  {
+    "id": "prod-1751770645976-6",
+    "name": "Portable Système Maison 7",
+    "description": "Découvrez notre Système Portable, une solution avancée pour optimiser votre quotidien dans le domaine de maison. Conçu pour la performance et la simplicité, il intègre une IA de pointe pour une expérience utilisateur sans précédent.",
+    "price": 29.07,
+    "imageUrl": "https://via.placeholder.com/300x200?text=Portable%20Syst%C3%A8me%20Mai",
+    "stock": 9
+  },
+  {
+    "id": "prod-1751770645976-7",
+    "name": "Performant Plateforme Sport 8",
+    "description": "Découvrez notre Plateforme Performant, une solution avancée pour optimiser votre quotidien dans le domaine de sport. Conçu pour la performance et la simplicité, il intègre une IA de pointe pour une expérience utilisateur sans précédent.",
+    "price": 117.66,
+    "imageUrl": "https://via.placeholder.com/300x200?text=Performant%20Plateform",
+    "stock": 20
+  },
+  {
+    "id": "prod-1751770645976-8",
+    "name": "Robuste Robot Santé 9",
+    "description": "Découvrez notre Robot Robuste, une solution avancée pour optimiser votre quotidien dans le domaine de santé. Conçu pour la performance et la simplicité, il intègre une IA de pointe pour une expérience utilisateur sans précédent.",
+    "price": 81.13,
+    "imageUrl": "https://via.placeholder.com/300x200?text=Robuste%20Robot%20Sant%C3%A9%20",
+    "stock": 42
+  },
+  {
+    "id": "prod-1751770645976-9",
+    "name": "Connecté Système Divertissement 10",
+    "description": "Découvrez notre Système Connecté, une solution avancée pour optimiser votre quotidien dans le domaine de divertissement. Conçu pour la performance et la simplicité, il intègre une IA de pointe pour une expérience utilisateur sans précédent.",
+    "price": 118.51,
+    "imageUrl": "https://via.placeholder.com/300x200?text=Connect%C3%A9%20Syst%C3%A8me%20Div",
+    "stock": 32
+  }
+]

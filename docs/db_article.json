@@ -1,0 +1,92 @@
+[
+  {
+    "id": "prod1751789039220-0",
+    "name": "Smartphone X 1",
+    "category": "Books",
+    "price": 225.64,
+    "stock": 2,
+    "description": "Description for Coffee Maker 1.",
+    "imageUrl": "https://picsum.photos/200/300?random=0"
+  },
+  {
+    "id": "prod1751789039221-1",
+    "name": "Gaming Headset 2",
+    "category": "Home Goods",
+    "price": 453.85,
+    "stock": 96,
+    "description": "Description for Mystery Novel 2.",
+    "imageUrl": "https://picsum.photos/200/300?random=1"
+  },
+  {
+    "id": "prod1751789039221-2",
+    "name": "Running Shoes 3",
+    "category": "Clothing",
+    "price": 369.55,
+    "stock": 83,
+    "description": "Description for Mystery Novel 3.",
+    "imageUrl": "https://picsum.photos/200/300?random=2"
+  },
+  {
+    "id": "prod1751789039221-3",
+    "name": "T-Shirt 4",
+    "category": "Home Goods",
+    "price": 456.8,
+    "stock": 85,
+    "description": "Description for Gaming Headset 4.",
+    "imageUrl": "https://picsum.photos/200/300?random=3"
+  },
+  {
+    "id": "prod1751789039221-4",
+    "name": "Running Shoes 5",
+    "category": "Electronics",
+    "price": 378.81,
+    "stock": 86,
+    "description": "Description for Running Shoes 5.",
+    "imageUrl": "https://picsum.photos/200/300?random=4"
+  },
+  {
+    "id": "prod1751789039221-5",
+    "name": "Laptop Pro 6",
+    "category": "Clothing",
+    "price": 252.26,
+    "stock": 81,
+    "description": "Description for Smartwatch 6.",
+    "imageUrl": "https://picsum.photos/200/300?random=5"
+  },
+  {
+    "id": "prod1751789039221-6",
+    "name": "Gaming Headset 7",
+    "category": "Home Goods",
+    "price": 207.26,
+    "stock": 87,
+    "description": "Description for Smartwatch 7.",
+    "imageUrl": "https://picsum.photos/200/300?random=6"
+  },
+  {
+    "id": "prod1751789039221-7",
+    "name": "Laptop Pro 8",
+    "category": "Electronics",
+    "price": 53.33,
+    "stock": 50,
+    "description": "Description for Smartwatch 8.",
+    "imageUrl": "https://picsum.photos/200/300?random=7"
+  },
+  {
+    "id": "prod1751789039221-8",
+    "name": "Coffee Maker 9",
+    "category": "Sports",
+    "price": 175.52,
+    "stock": 65,
+    "description": "Description for T-Shirt 9.",
+    "imageUrl": "https://picsum.photos/200/300?random=8"
+  },
+  {
+    "id": "prod1751789039221-9",
+    "name": "Laptop Pro 10",
+    "category": "Electronics",
+    "price": 506.92,
+    "stock": 1,
+    "description": "Description for Laptop Pro 10.",
+    "imageUrl": "https://picsum.photos/200/300?random=9"
+  }
+]

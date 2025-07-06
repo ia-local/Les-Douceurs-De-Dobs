@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique Couz-ia</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="card.css">
+    
+    <style>
+        /* Base styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding-bottom: 80px; /* Space for fixed footer on mobile */
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1em 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+
+        /* Main content */
+        main {
+            padding: 20px;
+            text-align: center;
+            padding-top: 10px; /* Adjust if header is smaller */
+        }
+        h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Products Container */
+        #products-container {
+            display: grid;
+            /* Mobile-first: une seule colonne par défaut */
+            grid-template-columns: 1fr; 
+            gap: 25px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Product Card Styles (from card.css for standalone demo) */
+        .product-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            /* Optionnel: pour éviter que les cartes ne soient trop larges sur mobile si elles prennent toute la ligne */
+            max-width: 600px;             
+            margin: 0 auto; 
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+        }
+
+        .product-card-content {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card h3 {
+            font-size: 1.3em;
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 10px;
+            min-height: 2.6em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .product-card p.description {
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 10px;
+            flex-grow: 1;
+            max-height: 4.5em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal;
+        }
+
+        .product-card .price {
+            font-size: 1.4em;
+            color: #007bff;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .product-card .stock {
+            font-size: 0.85em;
+            color: #888;
+            margin-bottom: 15px;
+        }
+
+        .product-card button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.2s ease-in-out;
+            width: 100%;
+        }
+
+        .product-card button:hover {
+            background-color: #218838;
+        }
+
+        .product-card button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        /* Loading/Error messages */
+        #loading-message, #error-message {
+            text-align: center;
+            font-size: 1.1em;
+            color: #555;
+            padding: 30px;
+        }
+        #error-message {
+            color: #dc3545;
+        }
+        
+        /* Footer Navigation - Mobile First */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 0; /* Remove padding from here */
+            position: fixed; /* Fix footer to bottom */
+            bottom: 0;
+            width: 100%;
+            z-index: 1000; /* Ensure it's above other content */
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+            display: flex; /* Use flexbox for navigation items */
+            justify-content: space-around; /* Distribute items evenly */
+            align-items: center;
+            height: 70px; /* Height of the footer nav */
+        }
+
+        .footer-nav {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        .footer-nav a {
+            flex: 1; /* Each item takes equal space */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            font-size: 0.75em; /* Smaller font for mobile */
+            padding: 5px;
+            transition: background-color 0.2s ease-in-out;
+            height: 100%; /* Fill the height of the footer */
+        }
+
+        .footer-nav a:hover,
+        .footer-nav a.active {
+            background-color: #555;
+        }
+
+        .footer-nav .icon {
+            font-size: 1.5em; /* Icon size */
+            margin-bottom: 3px;
+        }
+
+        /* Media query pour tablettes et ordinateurs (> 768px) */
+        @media (min-width: 780px) {
+            body {
+                padding-bottom: 0; /* No fixed footer padding on desktop */
+            }
+            header {
+                padding: 1em 0; /* Restore header padding */
+            }
+            header nav { /* Re-introduce header nav for desktop */
+                display: block;
+            }
+            header nav ul {
+                list-style: none;
+                padding: 0;
+                text-align: center;
+                margin-top: 10px;
+            }
+            header nav ul li {
+                display: inline;
+                margin: 0 15px;
+            }
+            header nav ul li a {
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+                padding: 5px 10px;
+                border-radius: 5px;
+                transition: background-color 0.2s ease-in-out;
+            }
+            header nav ul li a:hover {
+                background-color: #555;
+            }
+            
+            /* Pour les écrans plus grands : affichage en grille */
+            #products-container {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+
+            .product-card {
+                max-width: none; /* Supprime la largeur max sur les grands écrans */
+                width: 80%;
+                margin: initial; /* Supprime le centrage automatique sur les grands écrans */
+            }
+
+            footer {
+                position: relative; /* Unfix footer on desktop */
+                padding: 1em 0; /* Add back padding for desktop footer content */
+                height: auto; /* Auto height on desktop */
+                display: block; /* Show default footer content (copyright) */
+                box-shadow: none;
+            }
+            .footer-nav {
+                display: none; /* Hide mobile nav on desktop */
+            }
+            .desktop-footer-text {
+                display: block !important; /* Force display for desktop */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🛍️ Notre E-Boutique Couz-ia</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="shop.html">Boutique</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="outils-ia.html">Outils IA</a></li>
+                <li><a href="dashboard.html">Admin Dashboard</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Produits en Stock</h2>
+        <div id="products-container">
+            <p id="loading-message">Chargement des produits...</p>
+            <p id="error-message" style="display: none;"></p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-nav">
+            <a href="/index.html" class="nav-item">
+                <span class="icon">🏠</span>
+                <span>Accueil</span>
+            </a>
+            <a href="/shop.html" class="nav-item active">
+                <span class="icon">🛒</span>
+                <span>Boutique</span>
+            </a>
+            <a href="/contact.html" class="nav-item">
+                <span class="icon">💬</span>
+                <span>Contact</span>
+            </a>
+            <a href="outils-ia.html" class="nav-item">
+                <span class="icon">🧠</span>
+                <span>Outils IA</span>
+            </a>
+            <a href="/dashboard.html" class="nav-item">
+                <span class="icon">⚙️</span>
+                <span>Admin</span>
+            </a>
+        </div>
+        <p class="desktop-footer-text" style="display: none;">&copy; 2024 Couz-ia. Tous droits réservés.</p>
+    </footer>
+<script src="menu.js"></script>
+    <script>
+        // Fonction pour créer un élément DOM de carte produit (intégrée)
+        function createProductCardElement(product) {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.setAttribute('data-product-id', product.id);
+
+            card.innerHTML = `
+                <img src="${product.imageUrl || 'https://via.placeholder.com/300x200?text=No+Image'}" alt="${product.name}">
+                <div class="product-card-content">
+                    <h3>${product.name}</h3>
+                    <p class="description">${product.description || 'Aucune description disponible.'}</p>
+                    <p class="price">${product.price.toFixed(2)}€</p>
+                    <p class="stock">Stock: ${product.stock}</p>
+                    <button class="add-to-cart-btn" data-product-id="${product.id}" ${product.stock === 0 ? 'disabled' : ''}>
+                        ${product.stock === 0 ? 'Rupture de stock' : 'Ajouter au panier'}
+                    </button>
+                </div>
+            `;
+
+            const addToCartButton = card.querySelector('.add-to-cart-btn');
+            if (addToCartButton) {
+                addToCartButton.addEventListener('click', () => {
+                    console.log(`Produit ajouté au panier: ${product.name} (ID: ${product.id})`);
+                    alert(`"${product.name}" ajouté au panier !`); // Exemple simple
+                });
+            }
+
+            return card;
+        }
+
+        // Script pour lire db_article.json et afficher les produits
+        document.addEventListener('DOMContentLoaded', async () => {
+            const productsContainer = document.getElementById('products-container');
+            const loadingMessage = document.getElementById('loading-message');
+            const errorMessage = document.getElementById('error-message');
+
+            productsContainer.innerHTML = ''; // Nettoie le conteneur
+            loadingMessage.style.display = 'block'; // Affiche le message de chargement
+            errorMessage.style.display = 'none'; // Cache les messages d'erreur précédents
+
+            try {
+                // Tente de récupérer db_article.json directement depuis le même répertoire que shop.html
+                const response = await fetch('./db_article.json'); 
+                
+                if (!response.ok) {
+                    throw new Error(`Erreur lors du chargement du fichier db_article.json: ${response.status} - ${response.statusText}`);
+                }
+                const articlesData = await response.json(); // Récupère les données JSON
+
+                loadingMessage.style.display = 'none'; // Cache le message de chargement
+
+                if (articlesData.length === 0) {
+                    productsContainer.innerHTML = '<p style="text-align: center; padding: 20px;">Aucun produit disponible pour le moment. Le fichier db_article.json est vide.</p>';
+                } else {
+                    articlesData.forEach(product => {
+                        const productCard = createProductCardElement(product);
+                        productsContainer.appendChild(productCard);
+                    });
+                }
+            } catch (error) {
+                console.error('Erreur lors du chargement ou de l\'affichage des produits:', error);
+                loadingMessage.style.display = 'none';
+                errorMessage.style.display = 'block';
+                errorMessage.textContent = `Échec de l'affichage des produits : ${error.message}. Assurez-vous que db_article.json est dans le dossier 'docs/' et qu'il est valide.`;
+            }
+
+            // Highlight active nav item in footer for mobile
+            const currentPath = window.location.pathname;
+            const footerNavItems = document.querySelectorAll('.footer-nav a');
+            footerNavItems.forEach(item => {
+                // Normalize paths for comparison (remove trailing slashes, ensure leading slash)
+                const itemHref = new URL(item.href).pathname.replace(/\/$/, '');
+                const normalizedCurrentPath = currentPath.replace(/\/$/, '');
+
+                if (itemHref === normalizedCurrentPath) {
+                    item.classList.add('active');
+                } else if (normalizedCurrentPath === '' && itemHref === '/index.html') {
+                    // Handle root path (e.g., domain.com/ becomes /) for index.html
+                    item.classList.add('active');
+                }
+            });
+
+            // Toggle desktop footer text visibility based on initial load
+            const desktopFooterText = document.querySelector('.desktop-footer-text');
+            if (window.innerWidth >= 768) {
+                desktopFooterText.style.display = 'block';
+            } else {
+                desktopFooterText.style.display = 'none';
+            }
+
+            // Listen for window resize to adjust desktop footer text visibility
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 768) {
+                    desktopFooterText.style.display = 'block';
+                } else {
+                    desktopFooterText.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

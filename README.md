@@ -4,6 +4,9 @@
 
 Ce projet combine une solution d'e-boutique légère déployée sur GitHub Pages avec un bot Telegram interactif. L'objectif est d'offrir une plateforme de gestion de produits et d'interaction client, enrichie par des fonctionnalités d'Intelligence Artificielle (IA) pour la génération de contenu et la conversation.
 
+
+
+
 Le backend (serveur Node.js) gère une API REST pour les produits et les clients, et intègre un bot Telegram `Telegraf` propulsé par Groq pour les conversations IA et les interactions de commande. Le frontend (situé dans le dossier `docs/`) est une interface web simple pour la boutique, hébergée sur GitHub Pages. Le serveur intègre également un chatbot interactif directement dans le terminal pour les tests et interactions rapides.
 
 ### Fonctionnalités Clés :
